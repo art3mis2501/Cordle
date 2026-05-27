@@ -11,12 +11,42 @@
     This should be easy (i hopes lol :p)
 */
 
-/*  gotta randomize the word but. shits too hard rn im sleep
-    deprived. i'll try later after i get some sleep or idk
-*/
+
+int pickWord(char word[]){
+    FILE *file = fopen("words.txt", "r");
+    if (!file) return 1;
+
+    int count = 0;
+    char buffer[6];
+
+    // 1. Count total lines
+    while (fgets(buffer, sizeof(buffer), file)) {
+        count++;
+    }
+
+    if (count > 0) {
+        // 2. Pick a random index
+        srand(time(NULL));
+        int target = rand() % count;
+
+        // 3. Go back to start and find that line
+        rewind(file);
+        for (int i = 0; i <= target; i++) {
+            fgets(buffer, sizeof(buffer), file);
+        }
+    }
+
+    fclose(file);
+
+    for(int i=0; i<6; i++){
+        word[i] = buffer[i];
+    }
+
+    return 0;
+}
 
 int main(){
-    char word[6] = "trade";
+    char word[6];
     char guess[6];
     char result[6] = "_____";
     bool run = true;
@@ -26,6 +56,9 @@ int main(){
 
     
     while(run == true){
+
+        // PICKING RANDOM WORD
+        pickWord(word);
     
         int select;
         printf("---------------------------------------------------\n");
@@ -102,7 +135,7 @@ int main(){
         // GAME LOOP
         while(game == true){
             printf("---------------------------------------------------\n");
-            printf("%s", word);
+            //printf("%s", word); // UNCOMMENT THIS TO DEBUG THE WORD
             printf("Your guess: ");
             scanf("%s", guess);
 
@@ -160,6 +193,8 @@ int main(){
 
                 switch(select){
                     case 0:
+                    // PICKING RANDOM WORD
+                    pickWord(word);
                     
                     printf("---------------------------------------------------\n");
                         victory = false;
