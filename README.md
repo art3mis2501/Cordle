@@ -5,4 +5,6 @@ im learning C and was thikning about what easy projects i could work on to pract
 
 so yeah this is just Wordle but in C so Cordle. smart, i know ;3
 
-currently the only word available is "trade" which is hardcoded but i plan on making it randomized once i learn how to
+KNOWN GLITCHES:
+- sometimes the word picked is blank, so sometimes the game is literally unwinnable :3 (you can delete the comment thingy in line 138 if you want the word debug to show up in game so you can track that glitch)
+- the "right letter in wrong place" indicator (#) stays in the same place until you guess the correct letter. It is a pain, i'll tackle that on the next update
