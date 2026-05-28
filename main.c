@@ -170,6 +170,13 @@ int main(){
             }
             printf("%s\n", result);
 
+            // remove the # but keep the letters
+            for(int i=0; i<5; i++){
+                if(result[i] == '#'){
+                    result[i] = '_';
+                }
+            }
+
             // IF WIN GO TO VICTORY SCREEN
             // IF NOT, GO BACK TO INPUT
             // VICTORY SCREEN
@@ -222,10 +229,8 @@ int main(){
                         system("clear");
                         break;
                 }
-                
             }
         }
-    }
-    
+    }    
     return 0;
 }
